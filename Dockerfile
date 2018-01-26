@@ -1,10 +1,11 @@
 FROM php:7-fpm-alpine
 
 RUN docker-php-ext-configure pdo_mysql && \
-    docker-php-ext-configure opcache && \
-    docker-php-ext-configure mcrypt
+    docker-php-ext-configure opcache
+# && \
+#    docker-php-ext-configure mcrypt
 
-RUN docker-php-ext-install pdo_mysql opcache mcrypt && \
+RUN docker-php-ext-install pdo_mysql opcache && \
     docker-php-source delete
 
 RUN apk --update add supervisor
